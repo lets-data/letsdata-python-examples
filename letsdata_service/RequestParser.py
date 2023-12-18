@@ -5,6 +5,8 @@ from letsdata_service.SingleFileParserService import getSingleFileParserRequest
 from letsdata_service.QueueMessageReaderService import getQueueMessageReaderServiceRequest
 from letsdata_service.SagemakerVectorsInterfaceService import getSagemakerVectorsInterfaceServiceRequest
 from letsdata_service.KinesisRecordReaderService import getKinesisRecordReaderServiceRequest
+from letsdata_service.DynamoDBRecordReaderService import getDynamoDBRecordReaderServiceRequest
+from letsdata_service.DynamoDBTableItemReaderService import getDynamoDBTableItemReaderServiceRequest
 
 def getServiceRequest(event : dict) -> ServiceRequest:
     if event is None:
@@ -30,6 +32,10 @@ def getServiceRequest(event : dict) -> ServiceRequest:
         serviceRequest = getSagemakerVectorsInterfaceServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
     elif (interfaceName == InterfaceNames.KinesisRecordReader):
         serviceRequest = getKinesisRecordReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
+    elif (interfaceName == InterfaceNames.DynamoDBStreamsRecordReader):
+        serviceRequest = getDynamoDBRecordReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
+    elif (interfaceName == InterfaceNames.DynamoDBTableItemReader):
+        serviceRequest = getDynamoDBTableItemReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
     else:
         raise(Exception("lambda event - interfaceName not yet supported "+str(interfaceName)))
     

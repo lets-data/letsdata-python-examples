@@ -37,6 +37,7 @@ Here is a look at the #LetsData interfaces and what you might need to implement 
 ### Readers
 * **S3 - SingleFileParser**: The `letsdata_interfaces.readers.parsers.SingleFileParser` is the parser interface for reading an S3 File. This is where you tell us how to parse the individual records from the file. The implementation needs to be stateless.
 * **Kinesis - KinesisRecordReader**: The `letsdata_interfaces.readers.kinesis.KinesisRecordReader` is the parser interface for processing a kinesis record. This is where you transform a Kinesis record to a document.
+* **DynamoDB Streams - DynamoDBStreamsRecordReader**: The `letsdata_interfaces.readers.dynamodbstreams.DynamoDBStreamsRecordReader` is the parser interface for processing a dynamodb streams record. This is where you transform a DynamoDB Streams record to a document.
 * **SQS - QueueMessageReader**: The `letsdata_interfaces.readers.sqs.QueueMessageReader` is the parser interface for processing an sqs message. This is where you transform an sqs message to a document.
 * **Sagemaker - SagemakerVectorsInterface**: The `letsdata_interfaces.readers.sagemaker.SagemakerVectorsInterface` is the interface for processing documents for AWS Sagemaker vector embeddings generation. This is where you extract the document that needs vectorizationfrom the feature doc in `extractDocumentElementsForVectorization` and construct an output doc from the vectors in `constructVectorDoc`.
 

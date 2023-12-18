@@ -45,6 +45,8 @@ class InterfaceNames(Enum):
     QueueMessageReader = "queuemessagereader"
     SagemakerVectorsInterface = "sagemakervectorsinterface"
     KinesisRecordReader = "kinesisrecordreader"
+    DynamoDBStreamsRecordReader = "dynamodbstreamsrecordreader"
+    DynamoDBTableItemReader = "dynamodbtableitemreader"
     
     @classmethod
     def fromValue(cls, enumValue):
