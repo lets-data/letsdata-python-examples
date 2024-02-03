@@ -22,10 +22,10 @@ class DynamoDBTableItemReader:
         * For any errors in #LetsData DynamoDB Table Item Reader, or error docs being returned by the user data handler, #LetsData looks at the reader configuration and determines 1./ whether to fail the task with error 2./ or write an error doc and continue processing
         * If the decision is to continue processing, the reader polls for next record in the stream.
 
-        +---------------------+                              +---------------------+                        +---------------------+
-        | AWS DynamoDB Table  | ------ Read Items - -------> |    # Lets Data      |---- parseDocument ---> |  User Data Handler  |
-        |       Scan          |                              |  DDB Table Reader   |<---- document -------- |                     |
-        +---------------------+                              |                     |                        +---------------------+
+       +---------------------+                              +---------------------+                        +---------------------+
+       | AWS DynamoDB Table  | ------ Read Items - -------> |    # Lets Data      |---- parseDocument ---> |  User Data Handler  |
+       |       Scan          |                              |  DDB Table Reader   |<---- document -------- |                     |
+       +---------------------+                              |                     |                        +---------------------+
                                                             |   Is Error Doc?     |
                                                             |        |            |                        +---------------------+
                                                             |        +---- yes ->-|---- write document --->|  Write Destination  |
@@ -35,7 +35,7 @@ class DynamoDBTableItemReader:
                                                             |        |            |                        +---------------------+
                                                             | Should Checkpoint?  |
                                                             |        |            |
-                ---<------- Checkpoint Task --------<------|<- yes -+            |
+                 ---<------- Checkpoint Task --------<------|<- yes -+            |
                                                             |        |            |
                                                             |        |            |
                                                             | Throw on Error?     |

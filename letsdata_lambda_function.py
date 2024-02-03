@@ -1,4 +1,4 @@
-import gzip, base64, json
+import gzip, base64, json, os
 from letsdata_utils.logging_utils import logger
 from letsdata_utils.stage import Stage
 from letsdata_utils.request_utils import return500ResponseFromException, getLambdaStageFromEnvironment, getJsonObject
@@ -57,3 +57,4 @@ def lambda_handler(event, context):
         
     except Exception as err:
         return return500ResponseFromException(err, None)
+

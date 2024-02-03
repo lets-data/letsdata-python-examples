@@ -47,7 +47,9 @@ class InterfaceNames(Enum):
     KinesisRecordReader = "kinesisrecordreader"
     DynamoDBStreamsRecordReader = "dynamodbstreamsrecordreader"
     DynamoDBTableItemReader = "dynamodbtableitemreader"
-    
+    SparkMapperInterface = "sparkmapperinterface"
+    SparkReducerInterface = "sparkreducerinterface"
+
     @classmethod
     def fromValue(cls, enumValue):
         return cls(enumValue.lower())

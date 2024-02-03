@@ -7,6 +7,8 @@ from letsdata_service.SagemakerVectorsInterfaceService import getSagemakerVector
 from letsdata_service.KinesisRecordReaderService import getKinesisRecordReaderServiceRequest
 from letsdata_service.DynamoDBRecordReaderService import getDynamoDBRecordReaderServiceRequest
 from letsdata_service.DynamoDBTableItemReaderService import getDynamoDBTableItemReaderServiceRequest
+from letsdata_service.SparkMapperInterfaceService import getSparkMapperInterfaceServiceRequest
+from letsdata_service.SparkReducerInterfaceService import getSparkReducerInterfaceServiceRequest
 
 def getServiceRequest(event : dict) -> ServiceRequest:
     if event is None:
@@ -36,6 +38,10 @@ def getServiceRequest(event : dict) -> ServiceRequest:
         serviceRequest = getDynamoDBRecordReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
     elif (interfaceName == InterfaceNames.DynamoDBTableItemReader):
         serviceRequest = getDynamoDBTableItemReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
+    elif (interfaceName == InterfaceNames.SparkMapperInterface):
+        serviceRequest = getSparkMapperInterfaceServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
+    elif (interfaceName == InterfaceNames.SparkReducerInterface):
+        serviceRequest = getSparkReducerInterfaceServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData)
     else:
         raise(Exception("lambda event - interfaceName not yet supported "+str(interfaceName)))
     

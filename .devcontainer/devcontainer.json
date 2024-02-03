@@ -1,0 +1,19 @@
+{
+    "name": "letsdata_python_interface",
+  
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "dockerFile": "../dockerfile",
+  
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+  
+    "customizations": {
+      "vscode": {
+        "settings": {"terminal.integrated.shell.linux": null},
+        "extensions": ["ms-python.python", "ms-toolsai.jupyter"]
+      }
+    },
+  
+    "forwardPorts": [4050],
+    "initializeCommand": "echo 'Initializing dev container!'"
+  }
